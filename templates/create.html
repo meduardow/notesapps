@@ -1,0 +1,48 @@
+{% extends "layout.html" %} 
+
+{% block title %}Buat Catatan{% endblock %}
+
+{% block content %}
+	<section class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<form action="" method="POST">
+						<fieldset>
+							<legend >
+								Add Note
+							</legend>
+							<div class="form-group">
+								<input class="form-control" type="text" name="title" placeholder="Title">
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" type="text" name="note" placeholder="Leave your note here" rows="10"></textarea>
+							</div>
+						</fieldset>
+						<div class="form-group">
+							<button class="btn btn-primary">Add Note</button>
+						</div>
+					</form>
+				</div>
+				<div class="col-6">
+					{% if notes %}
+					<h4 class="mb-3">{{ login_user['first_name'] }} Notes</h4>
+						{% for note in notes %}
+						<div class="card mb-2">
+							<div class="card-body">
+								<h5 class="card-title">{{ note.Note.title }}</h5>
+								<a href="{{url_for('.edit', note_id=note.Note.id)}}">Edit</a>
+								<a href="{{url_for('.delete', note_id=note.Note.id)}}">Delete</a>
+								<small class="card-subtitle">{{ note.Note.created_on.strftime('%d-%m-%Y') }}</small>
+								<p class="card-text">{{ note.Note.note }}</p>
+							</div>
+						</div>
+						{% endfor %}
+					{% else %}
+					<h4 class="mb-3">There is no notes yet here.</h4>
+					{% endif %}
+				</div>
+			</div>
+		</div>	
+	</section>
+{% endblock %}

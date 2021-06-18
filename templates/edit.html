@@ -1,0 +1,30 @@
+{% extends "layout.html" %} 
+
+{% block title %}Buat Catatan{% endblock %}
+
+{% block content %}
+	<section class="content">
+		<div class="container">
+			<div class="row">
+				<div class=" offset-md-3 col-6">
+					<form action="" method="POST">
+						<fieldset>
+							<legend>
+								Update Note
+							</legend>
+							<div class="form-group">
+								<input class="form-control" type="text" name="title" placeholder="Title" value="{{note.title}}">
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" type="text" name="note" placeholder="Leave your note here" rows="10">{{note.note}}</textarea>
+							</div>
+						</fieldset>
+						<div class="form-group">
+							<button class="btn btn-info">Update</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</section>
+{% endblock %}
